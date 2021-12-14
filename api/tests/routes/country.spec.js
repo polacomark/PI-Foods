@@ -14,11 +14,19 @@ describe('Recipe routes', () => {
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Recipe.sync({ force: true })
-    .then(() => Recipe.create(recipe)));
+  // beforeEach(() => Recipe.sync({ force: true })
+  //   .then(() => Recipe.create(recipe)));
   describe('GET /recipes', () => {
-    it('should get 200', () =>
+    it('GET response with 200 if recives recipes', function(){
       agent.get('/recipes').expect(200)
-    );
+    });
   });
 });
+describe('GET /recipes/:id', () => {
+  it('GET response with 200 if it finds a recipe with the id provided', function () {
+      agent.get('/recipes/25')
+      .expect(function(res) {
+        expect(res.status).equal(200);
+      })
+    })
+})
