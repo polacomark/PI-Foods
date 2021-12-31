@@ -1,106 +1,124 @@
-import axios from "axios";
-import{
-     GET_RECIPES,
-     FILTER_BY_DIET,
-     ORDER_BY_NAME,
-     ORDER_BY_RANK,
-     GET_NAME_RECIPES,
-     GET_DETAILS,
-     GET_DIET,
-     FILTER_BY_CREATED,
-     POST_RECIPE
-     } from "./actionsCreate";
+import axios from 'axios';
 
- export function getRecipes() {
-     return async function (dispatch) {
-         
-             let json = await axios.get("http://localhost:3001/recipes");
 
-             return dispatch({
-                 type: GET_RECIPES,
-                 payload: json.data
-             });
-         
-     };
- }
+//coneccion del back con el front de recipes
+export function getRecipes() {
+    
+    return async function(dispatch) {
 
- export function filterByDiet(payload) {
-    return {
-      type: FILTER_BY_DIET,
-      payload,
-    };
-  }
-  export function orderByName(payload) {
-    return {
-      type: ORDER_BY_NAME,
-      payload,
-    };
-  }
-  
-  export function orderByRank(payload) {
-    return {
-      type: ORDER_BY_RANK,
-      payload,
-    };
-  } 
-  export function filterByCreated(payload){
-    return{
-        type: FILTER_BY_CREATED,
+        let json = await axios.get('http://localhost:3001/recipes');
+        // console.log(json.data,'get action')
+        return dispatch({
+            type: 'GET_RECIPES',
+            payload: json.data
+        })
+    }
+}
+
+// export function getRecipes(){
+//     return  function(dispatch){
+//         axios.get('http://localhost:3001/recipes')
+//             .then((json) => {
+//             return dispatch({
+//                 type:'GET_RECIPES',
+//                 payload: json.data
+//             })
+//         }).catch((error) => {
+//             console.log(error)
+//         })
+//     }
+// }
+
+//-coneccion del back con el front de diets
+export function getDiets(){
+    return async function(dispatch) {
+        var info= await axios('http://localhost:3001/diets');
+        return dispatch ({
+            type: 'GET_DIETS', 
+            payload: info.data
+        })
+    }
+}
+
+export function postRecipes(payload){
+    //console.log(payload)
+    return async function(dispatch) {
+        var data = await axios.post('http://localhost:3001/recipe',payload)
+        
+        //console.log(data)
+        return data;
+    }
+}
+
+//------------------busqueda-------------------------------
+export function getNameRecipes(name){
+    return async function(dispatch){
+        try{
+            var json = await axios.get('http://localhost:3001/recipes?name=' + name);
+            
+            return dispatch({
+                type: 'GET_NAME_RECIPES',
+                payload: json.data
+            })
+            
+        }catch(err){
+            // console.log(json.data,'action name')
+            console.log(err)
+        }
+    }
+}
+
+//-----------------actions filters busqueda-------------------//evitemos porner logica en acciones, hacerlo en reducer
+
+export function filetrRecipesByTypes(payload){
+    return{ 
+        type: 'FILTER_BY_TYPE_DIETS',
         payload
     }
-} 
+}
 
-  export function searchByName(name) {
-     //try {
-          return async function (dispatch) {
-              let res = await axios.get(`http://localhost:3001/recipes?name=${name}`);
 
-              return dispatch({
-                  type: GET_NAME_RECIPES,
-                  payload: res.data
-              });
-          };
-    //   }catch(error) {
-    //       console.log(error);
-    //   }
-  }
-  export function getDetails(id) {
-      //try {
-          return async function (dispatch) {
-              let json = await axios.get(`http://localhost:3001/recipes/${id}`);
-              return dispatch({
-                  type: GET_DETAILS,
-                  payload: json.data
-              });
-          };
-    //   } catch (error) {
-    //       console.log(error);
-    //   }
-  }
-  export function getDiets() {
-      //try {
-          return async function (dispatch) {
-              let res = await axios.get(`http://localhost:3001/diets`);
 
-              return dispatch({
-                  type: GET_DIET,
-                  payload: res.data
-              });
-          };
-    //   } catch (error) {
-    //       console.log(error);
-    //   }
+export function filterRecipesByCreated(payload){
+    return async function (dispatch){
+        try{
+            return dispatch({
+                type: 'FILTER_BY_CREATED_RECIPE',
+                payload
+
+            })
+            
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+export function orderByName(payload){
+    return{
+        type: 'FILTER_BY_ORDER',
+        payload
+    }
+}
+export function orderByScore(payload) {
+    return {
+      type: "ORDER_BY_SCORE",
+      payload,
+    };
   }
-  export function postRecipe(payload) {
-      //try {
-          return async function () {
-              let res = await axios.post(`http://localhost:3001/recipe`, payload);
-                 return {
-                     type: POST_RECIPE,
-                     res,
-                 };
-          };
-    //   } catch (error) {
-    //       console.log(error);
-    //   }
-  }
+export function getDetail(id){
+    return async function(dispatch) {
+        try{
+            let json = await axios.get(`http://localhost:3001/recipes/${id}`)
+            // console.log(json.data,'action id')
+            return dispatch({
+                type: 'GET_DETAIL',
+                payload: json.data
+            })
+            
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+}

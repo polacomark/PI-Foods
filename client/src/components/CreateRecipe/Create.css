@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.allF {
+    width:  100%;
+    height: 880px;
+
+    background: url('../../image/933a88539897ac96d71b65c27122b3ec.jpg') center center no-repeat;
+    background-size: 100% auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.allF h1 {
+    color: rgb(248, 244, 14);
+    position: absolute;
+    right: 150px;
+    margin: 25px;
+
+    font-family: 'Balsamiq Sans', cursive; 
+    font-size: 50px;
+}
+
+
+.formulario form{
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(246, 250, 6, 0.377);
+    border: rgba(246, 250, 6, 0.938) solid 2px;
+    border-radius: 10px;
+}
+
+.allF .formulario label{
+    color: aliceblue;
+    font-weight: bold;
+    height: 30px;
+}
+
+.line{
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    
+}
+.line input {
+    width: 300px;
+    height: 30px;
+    background-color: black;
+    color: rgb(209, 220, 230);
+    border: black solid 2px;
+    border-radius: 5px;
+}
+.line select {
+    width: 300px;
+    height: 30px;
+    background-color: black;
+    color: aliceblue;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+.line textarea {
+    width: 300px;
+    height: 90px;
+    background-color: black;
+    color: aliceblue;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+.line label {
+    width: 150px;
+    height: 30px;
+}
+
+.formulario .bts {
+    margin: 10px;
+    padding: 10px;
+    width: 450px;
+    background-color: rgba(0, 0, 0, 0.938);
+    border: rgba(0, 0, 0, 0.842) solid 4px;
+    border-radius: 5px;
+
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    color: rgba(246, 250, 6, 0.938);
+
+
+}
+
+.formulario .bts:hover {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background-color: rgba(246, 250, 6, 0.521);
+}
+
+.fullElement {
+    position: relative;
+    top: 400px;
+    left: 200px;
+
+}
+.element {
+    background-color: rgba(246, 250, 6, 0.377);
+    border: rgba(250, 185, 6, 0.938) solid 2px;
+
+    height: 40px;
+    width: 250px;
+    margin: 20px;
+
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between    
+}
+
+.element h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+}
+
+.element button{
+    height: 30px;
+    width: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 50px;
+    border:  solid 3px rgb(5, 5, 5);
+    text-align: center;
+    padding: auto;
+    color: rgb(2, 2, 2);
+    background-color: rgba(0, 0, 0, 0);
+    
+}

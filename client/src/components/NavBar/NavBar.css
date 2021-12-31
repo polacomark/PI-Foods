@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.nav {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(246, 250, 6);
+
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 35px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo img {
+    height: 30px;
+    width: auto;
+}
+
+.botoncitos ul{
+    display: flex;
+    flex-direction: row;    
+}
+.botoncitos li{
+    margin: 15px;
+    
+    font-size: 25px;    
+    list-style: none;   
+    
+}
+
+.botoncitos button {
+    color: rgb(34, 33, 33);
+    background-color: rgba(225, 228, 231, 0.068);
+    border: rgb(14, 13, 13);
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 20px;
+    
+}
+.botoncitos button:hover {
+    font-weight: bold;
+}
+.bth{
+    width: 85px; 
+    padding: 15px;
+   
+}
+.btc{
+    width: 160px;
+    padding: 15px;
+}

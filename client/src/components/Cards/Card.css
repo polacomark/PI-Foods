@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    height: 320px;
+    width: 320px;
+    border: rgba(51, 49, 49, 0.637) solid 2px;
+    border-radius: 10px;
+    background-color: rgba(128, 122, 122, 0.445);
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    
+}
+.card:hover {
+    background: rgb(255, 79, 5);
+    background: linear-gradient(
+      63deg,
+      rgba(252, 142, 95, 0.336) 4%,
+      rgba(254, 85, 7, 0.363) 9%,
+      rgb(238, 194, 83) 86%,
+      rgba(184, 180, 178, 0.418) 98%
+    );
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(218, 221, 35, 0.788), 0 0 10px rgba(225, 248, 21, 0.788), 0 0 10px rgba(74, 30, 233, 0.863);    
+    transition: 0.3s;
+  }
+  .overlay{
+   
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:#f6fdfca1;
+    color:rgb(66, 2, 45) ;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+    border-radius: 7%;
+    backdrop-filter: blur 4px;
+    font-weight:80px;
+    text-align: left;
+    
+    
+}
+.card img {
+    width: auto;
+    height: 200px;
+    margin: 2px;
+}
+.card h3{
+    color: rgba(250, 250, 44, 0.993);
+    margin: 10px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.card h6 {
+    color: rgba(243, 243, 62, 0.993);
+    margin: 5px;
+    font-size: 12px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.span{
+    color: rgb(207, 252, 47);
+    margin: 5px;
+    font-size: 17px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}

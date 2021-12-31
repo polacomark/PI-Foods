@@ -33,14 +33,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
 
-    steps: {
+   steps: {
       type: DataTypes.TEXT,
-      allowNull: true,
     },
-    // createInDb: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: true
-    // },
-  });
+  },
+  //{ timestamps: false } 
+  
+  )
+
+ 
 };

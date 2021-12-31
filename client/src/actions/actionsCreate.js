@@ -1,9 +1,0 @@
-export const GET_RECIPES = "GET_RECIPES";
-export const FILTER_BY_DIET = "FILTER_BY_DIET" ;
-export const ORDER_BY_NAME = "ORDER_BY_NAME";
-export const ORDER_BY_RANK = "ORDER_BY_RANK";
-export const GET_NAME_RECIPES = "GET_NAME_RECIPES";
-export const GET_DETAILS = "GET_DETAILS";
-export const GET_DIET = "GET_DIET";
-export const POST_RECIPE = "POST_RECIPE";
-export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
