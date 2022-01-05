@@ -98,7 +98,7 @@ height: 1380px;
   display: flex;
   left: 240px;
   bottom: -60px;
-
+  text-decoration: uppercase;
 }
 .foo{
   display: flex;

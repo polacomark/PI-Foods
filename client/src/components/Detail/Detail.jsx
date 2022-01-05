@@ -2,8 +2,7 @@
 import React, {useEffect} from "react";
 import {Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-//import { useEffect, useState } from "react";
-import { getDetail} from "../../actions/actions";
+import { getDetail } from "../../actions/actions";
 import NavBar from "../NavBar/navbar";
 import './Detail.css';
 import image from '../../image/fuego.jpg'
@@ -11,16 +10,14 @@ import image from '../../image/fuego.jpg'
 export default function Detail (props){
     const dispatch = useDispatch()
     const {id}=props.match.params;
-    //const {id} = useParams()
-    // const [rId, setId] = useState(id)
-
+    
     useEffect(() => {
         dispatch(getDetail(id))
     },[id,dispatch])
-
+    
     const myRecipe = useSelector(state => state.detail)
 
-    // console.log(myRecipe, 'recetas')
+    //console.log(myRecipe, 'recetas')
 
     return(
         <div>
@@ -36,7 +33,7 @@ export default function Detail (props){
                             {/* <h1>{myRecipe[0].title ? myRecipe[0].title : myRecipe[0].name}</h1> */}
                             <img src={myRecipe[0].image ? myRecipe[0].image : image} alt="no se encontro iagen"/>  
                             
-                                <p className='art'>Tipo de dietas: {myRecipe[0].diets.join(', ')}</p>
+                                <p className='art'>Tipo de dietas: { myRecipe[0].diets.map(diet=>typeof diet==='object'?diet.name:diet).join(', ')}</p>
                                 {/* <h2>{ myRecipe[0].diets ? myRecipe[0].diets.map(t =>t.name) : myRecipe[0].diets}</h2> */}
                             
                             

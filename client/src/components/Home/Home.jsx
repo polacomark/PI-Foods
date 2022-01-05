@@ -15,13 +15,9 @@ export default function Home(){
     // para usar la constante y despachar las acciones
     const dispatch = useDispatch(); 
     // traigo todo lo que esta en el reducer los estado de recipes
-    const allRecipes = useSelector((state) => state.recipes);   //es lo mismo que hacer  mapStateToProps
-    // const allDiets = useSelector(state => state.diets)
+    const allRecipes = useSelector((state) => state.recipes)
     const diets = useSelector((state) => state.diets)
     //-----------------------------------------------------------
-
-
-
 
     //------------------paginado home-----------------------------
     const [orden, setOrden] = useState('');

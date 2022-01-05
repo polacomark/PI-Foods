@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
-    ID: {
+    id: {
       type: DataTypes.UUID,      //genera un id random, unico y especifico para no pisar con los id de la Api.
       allowNull: false,
       primaryKey: true,

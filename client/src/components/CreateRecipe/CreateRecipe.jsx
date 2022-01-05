@@ -66,12 +66,12 @@ export default function RecipeCreater () {
         // }
     }
 
-    function handleDelete(e) {
-        setInput({
-            ...input,
-            diets: input.diets.filter(d => d !==e)
-        })
-   }
+//     function handleDelete(e) {
+//         setInput({
+//             ...input,
+//             diets: input.diets.filter(d => d !==e)
+//         })
+//    }
 
 
     const handleSubmit = (e) => {
@@ -109,7 +109,10 @@ export default function RecipeCreater () {
                 <div className='line'>
                     <label>Name:</label>
                 </div>
-                    <input type="text" value = {input.title} name="title" onChange={handleChange}/>
+                    <input type="text" 
+                    value = {input.title} 
+                    name="title" 
+                    onChange={handleChange}/>
                     {errors.title && (
                         <div> 
                             <p className="error">{errors.title}</p>
@@ -119,7 +122,11 @@ export default function RecipeCreater () {
                     <div className='line'>
                         <label>Summary:</label>
                     </div>
-                    <textarea type="text" value = {input.summary} name="summary" onChange={handleChange} className='boxSummary' />
+                    <textarea type="text" 
+                    value = {input.summary} 
+                    name="summary" 
+                    onChange={handleChange} 
+                    className='boxSummary' />
                     {errors.summary && (
                         <div className='errorSummary'>
                             <p className="error">{errors.summary}</p>
@@ -130,7 +137,10 @@ export default function RecipeCreater () {
                     <div className='line'>
                         <label>spoonacularScore:</label>
                     </div>
-                    <input type="number" value = {input.spoonacularScore} name="spoonacularScore" onChange={handleChange} className='boxSpoonacular'/>
+                    <input type="number" 
+                    value = {input.spoonacularScore} 
+                    name="spoonacularScore" 
+                    onChange={handleChange} className='boxSpoonacular'/>
                     {errors.spoonacularScore && (
                         <div className='errorSpoonacular'>
                             <p className="error">{errors.spoonacularScore}</p>
@@ -141,7 +151,10 @@ export default function RecipeCreater () {
                     <div className='line'>
                         <label>healthScore:</label>
                     </div>
-                    <input type="number" value = {input.healthScore} name="healthScore" onChange={handleChange} className='boxHealth'/>
+                    <input type="number" 
+                    value = {input.healthScore} 
+                    name="healthScore" 
+                    onChange={handleChange} className='boxHealth'/>
                     {errors.healthScore && (
                         <div className='errorHealth'>
                             <p className="error">{errors.healthScore}</p>
@@ -152,7 +165,10 @@ export default function RecipeCreater () {
                     <div className='line'>
                         <label>steps:</label>
                     </div>
-                    <textarea type="text" value = {input.steps} name="steps" onChange={handleChange} className='boxSteps'/>
+                    <textarea type="text" 
+                    value = {input.steps} 
+                    name="steps" 
+                    onChange={handleChange} className='boxSteps'/>
                     {errors.steps && (
                         <div className='errorSteps'>
                             <p className="error">{errors.steps}</p>
@@ -189,14 +205,18 @@ export default function RecipeCreater () {
                             return (
                             <div key = {e.name}>
                                 <span>{e.name}</span>
-                             <input type="checkbox" name = {e.name} value = {index + 1} onChange = {handleCheckBox}/>
+                             <input type="checkbox" 
+                             name = {e.name} 
+                             value = {index + 1} 
+                             onChange = {handleCheckBox}/>
                              </div>
                         )})}
                      </label>
                  </div> 
 
             
-                <button type="submit" className='bts'>Create recipe</button>
+               {input.title&&input.summary&&input.spoonacularScore&&input.healthScore&&input.steps.length&&input.diets.length
+                 ?<button type="submit" className='bts'>Create recipe</button>:null}
             </form>
            
         </div>

@@ -36,7 +36,7 @@ function rootReducer(state= initialState, action){
                 filterByTemp=state.allRecipes;
             }else{
                 filterByTemp=state.allRecipes.filter((dFilter)=>dFilter.diets.includes(action.payload))
-                //filterByTemp = state.allDogs.filter((d)=>d.temperament).filter((dfiltered)=>dfiltered.temperament.includes(action.payload));
+                //filterByTemp = state.allRecipes.filter((d)=>d.diets).filter((dfiltered)=>dfiltered.diets.includes(action.payload));
                 
                 //.filter((d)=>d.diets.includes(action.payload))
         }

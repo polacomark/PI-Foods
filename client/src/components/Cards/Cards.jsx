@@ -14,7 +14,8 @@ export default function Cards({ title, image, diets, spoonacularScore }) {
             <div>
             <span className="span">Score: {spoonacularScore}</span>
             </div >
-            <h6>Diets: {diets.join(', ')}</h6>
+            <h6>Diets: {diets.map(diet=>typeof diet==='object'?diet.name:diet).join(', ')}</h6>
+        
             </div>
         </div>
     )

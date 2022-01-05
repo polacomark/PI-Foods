@@ -1,19 +1,19 @@
 import './App.css';
-//import React, {useEffect} from 'react';
-//import { useDispatch } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from "./components/Home/Home";
 import Landing from "./components/Landing/Landing";
 import Detail from './components/Detail/Detail';
 import CreateRecipe from './components/CreateRecipe/CreateRecipe';
-//import { getRecipes, getDiets} from './reducer/redux';
+import { getRecipes, getDiets} from './actions/actions';
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getRecipes());
-  //   //dispatch(getDiets());
-  // }, [dispatch])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRecipes());
+    dispatch(getDiets());
+  }, [dispatch])
 
   return (
     <BrowserRouter>

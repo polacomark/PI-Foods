@@ -5,9 +5,9 @@ const axios = require("axios");
 const { API_KEY2} = process.env;
 const { Recipe, Diet } = require("../db");
 //const diet = require('./diets.js');
-//const cors = require("cors");
+const cors = require("cors");
 const router = Router();
-//router.use (cors({origin:"http://localhost:3000", credentials: true}));
+router.use (cors({origin:"http://localhost:3000", credentials: true}));
 
 
 // Configurar los routers
@@ -28,9 +28,8 @@ const apiData=async ()=>{
             healthScore: e.healthScore,
             spoonacularScore: e.spoonacularScore,
             image: e.image,
-            //steps: e.steps.map(ele=>{return{number:ele, step: ele}}),
-            steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'No steps found',
-            //steps: e.analyzedInstructions ? e.analyzedInstructions[0]steps.map(ele=>`step ${ele.number}: ${ele.step}`): null,
+            steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?
+            e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'No steps found',
             diets: e.diets
         } 
       });
@@ -52,22 +51,19 @@ try{
             }
         }
     });
-    // const all = dbRecipe.map((e)=>{
+    //  const all = dbRecipe.map((e)=>{
     //   return{
-    //     id: e.id,
-    //     title: e.title,
-    //     summary: e.summary,
-    //     healthScore: e.healthScore,
-    //     spoonacularScore: e.spoonacularScore,
-    //     image: e.image,
-    //     //analyzedInstructions: e.analyzedInstructions.map(e=> e.steps),
-    //     steps: [e.analyzedInstructions.length>0] && Array.isArray(e.analyzedInstructions[0].steps)? e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.name}`) :'No steps found',
-    //     //steps: e.steps.map(ele=>{return{number:ele, step: ele}}),
-    //     //steps: e.analyzedInstructions ? e.analyzedInstructions[0]: null,
-    //     diets: e.diets.map((d) => {return{name:d}})
+    //     id: e.dataValue.id,
+    //     title: e.dataValues.title,
+    //     summary: e.dataValues.summary,
+    //     healthScore: e.dataValues.healthScore,
+    //     spoonacularScore: e.dataValues.spoonacularScore,
+    //     image: e.dataValues.image,
+    //     steps: e.dataValues.steps,
+    //     diets: e.dataValues.diets
     // } 
-    // })
-    // return all;
+    //  })
+     //return all;
  return dbRecipe;
 }catch(error){
     console.log(error)
@@ -212,34 +208,28 @@ router.get('/diets', async (req, res)=>{
      
 
   });
-//   router.get("/recipes/:id", async (req, res, next)=>{
-//     const {id} = req.params;  
-//     const recipeid = axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
-//     .then(results => results.data)
-//     .then(res => {
-//         let recipe={
-//           id: res.id,
-//           title: res.title,
-//           summary:res.summary,
-//           healthScore: res.healthScore,
-//           spoonacularScore: res.spoonacularScore,
-//           image: res.image,
-//           //analyzedInstructions: e.analyzedInstructions.map(e=> e.steps),
-//           //steps:(e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'No steps found',
-//           steps: res.analyzedInstructions ? res.analyzedInstructions[0]: null,
-//           diets: res.diets.map((d) => {return{name:d}})
-//         }
-//         return recipe;
-//     })  
-//     .catch((err)=>{
-//         next(err)
-//     });
-//     return recipeid;    
-//  });
+
+// router.get("/:id", async(req, res, next)=>{
+//   const { id } = req.params;
+//   const regex = /(\w+\-){4}\w+/g;
+//   let recipes = null;
+//   if(regex.test(id)){
+//     recipes= await Recipe.findByPk(id,{
+//       includ:{
+//         model: Diet
+//       }
+//     })
+//   }else{
+//     recipes = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
+//     recipes = recipes.data;
+//   }
+//   res.json(recipes)
+// })
   
   router.get("/recipes/:id", async (req, res) => {
     const { id } = req.params;
     //const regex = /(\w+\-){4}\w+/g;
+    //console.log(id)
     const recipesTotal = await getAllRecipes();
     if (id) {
       let recipeId = await recipesTotal.filter(r => r.id == (id));
